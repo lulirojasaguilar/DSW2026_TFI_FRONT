@@ -5,106 +5,88 @@ import {
 } from 'react-router-dom';
 import { AuthProvider } from './modules/auth/context/AuthProvider';
 import ProtectedRoute from './modules/auth/components/ProtectedRoute';
+import RootRedirect from './modules/auth/components/RootRedirect';
+import { ROLES } from './modules/shared/constants';
+
+// Templates
+import AdminLayout from './modules/shared/components/templates/AdminLayout';
+import PatientLayout from './modules/shared/components/templates/PatientLayout';
 
 // Auth Module
+import AccessDeniedPage from './modules/auth/pages/AccessDeniedPage';
 import AdminLoginPage from './modules/auth/pages/AdminLoginPage';
-
-// Patients Module
-import PatientLoginPage from './modules/patients/pages/PatientLoginPage';
-import PatientLayout from './modules/patients/components/PatientLayout';
-import PatientHome from './modules/patients/pages/PatientHome';
-import AppointmentsPage from './modules/patients/pages/AppointmentsPage';
+import PatientLoginPage from './modules/auth/pages/PatientLoginPage';
 
 // Dashboard Module
-import DashboardLayout from './modules/dashboard/components/DashboardLayout';
-import OverviewPage from './modules/dashboard/pages/OverviewPage';
+import DashboardPage from './modules/dashboard/pages/DashboardPage';
 
-// Domain Modules (Screaming Architecture)
-import DoctorsPage from './modules/doctors/pages/DoctorsPage';
-import SpecialtiesPage from './modules/specialties/pages/SpecialtiesPage';
-import AppointmentsSearchPage from './modules/appointments/pages/AppointmentsSearchPage';
+// Doctors Module
+import DoctorsListPage from './modules/doctors/pages/DoctorsListPage';
+import DoctorFormPage from './modules/doctors/pages/DoctorFormPage';
+import DoctorSchedulePage from './modules/doctors/pages/DoctorSchedulePage';
 
+// Specialties Module
+import SpecialtiesListPage from './modules/specialties/pages/SpecialtiesListPage';
+import SpecialtyFormPage from './modules/specialties/pages/SpecialtyFormPage';
+
+// Appointments Module
+import AppointmentDetailPage from './modules/appointments/pages/AppointmentDetailPage';
+import AppointmentSearchPage from './modules/appointments/pages/AppointmentSearchPage';
+import BookAppointmentPage from './modules/appointments/pages/BookAppointmentPage';
+import MyAppointmentsPage from './modules/appointments/pages/MyAppointmentsPage';
+
+// Solo los dos logins son públicos. El resto pasa por ProtectedRoute ("/" solo redirige).
 const routes = [
-  // Rutas públicas
+  { path: '/', element: <RootRedirect /> },
+  { path: '/login', element: <AdminLoginPage /> },
+  { path: '/patient/login', element: <PatientLoginPage /> },
   {
-    path: '/login',
-    element: <PatientLoginPage />,
-  },
-  {
-    path: '/admin/login',
-    element: <AdminLoginPage />,
-  },
-
-  // Rutas privadas de pacientes (URL base y turnos)
-  {
-    path: '/',
+    path: '/access-denied',
     element: (
-      <ProtectedRoute redirectTo="/login">
+      <ProtectedRoute>
+        <AccessDeniedPage />
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: '/app',
+    element: (
+      <ProtectedRoute role={ROLES.ADMIN}>
+        <AdminLayout />
+      </ProtectedRoute>
+    ),
+    children: [
+      { index: true, element: <DashboardPage /> },
+      { path: 'doctors', element: <DoctorsListPage /> },
+      { path: 'doctors/new', element: <DoctorFormPage /> },
+      { path: 'doctors/schedule', element: <DoctorSchedulePage /> },
+      { path: 'doctors/:id/edit', element: <DoctorFormPage /> },
+      { path: 'doctors/:id/schedule', element: <DoctorSchedulePage /> },
+      { path: 'specialties', element: <SpecialtiesListPage /> },
+      { path: 'specialties/new', element: <SpecialtyFormPage /> },
+      { path: 'specialties/:id/edit', element: <SpecialtyFormPage /> },
+      { path: 'appointments', element: <AppointmentSearchPage /> },
+      { path: 'appointments/:id', element: <AppointmentDetailPage /> },
+    ],
+  },
+  {
+    path: '/patient',
+    element: (
+      <ProtectedRoute role={ROLES.PATIENT}>
         <PatientLayout />
       </ProtectedRoute>
     ),
     children: [
-      {
-        index: true,
-        element: <PatientHome />,
-      },
-      {
-        path: 'appointments',
-        element: <AppointmentsPage />,
-      },
+      { index: true, element: <MyAppointmentsPage /> },
+      { path: 'book', element: <BookAppointmentPage /> },
     ],
   },
-
-  // Rutas privadas de gestión clínica y administración
-  {
-    path: '/admin',
-    element: (
-      <ProtectedRoute redirectTo="/admin/login">
-        <DashboardLayout />
-      </ProtectedRoute>
-    ),
-    children: [
-      {
-        index: true,
-        element: <Navigate to="/admin/home" replace />,
-      },
-      {
-        path: 'home',
-        element: <OverviewPage />,
-      },
-      {
-        path: 'patients',
-        element: <AppointmentsSearchPage />,
-      },
-      {
-        path: 'patient-search',
-        element: <AppointmentsSearchPage />,
-      },
-      {
-        path: 'appointments',
-        element: <Navigate to="/admin/patients" replace />,
-      },
-      {
-        path: 'specialties',
-        element: <SpecialtiesPage />,
-      },
-      {
-        path: 'doctors',
-        element: <DoctorsPage />,
-      },
-    ],
-  },
-
-  // Redirección para cualquier otra URL
-  {
-    path: '*',
-    element: <Navigate to="/" replace />,
-  },
+  { path: '*', element: <Navigate to="/" replace /> },
 ];
 
-function App() {
-  const router = createBrowserRouter(routes);
+const router = createBrowserRouter(routes);
 
+function App() {
   return (
     <AuthProvider>
       <RouterProvider router={router} />
