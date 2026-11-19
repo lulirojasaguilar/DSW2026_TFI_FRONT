@@ -11,8 +11,6 @@ export const LOGIN_BY_ROLE = {
   PACIENTE: '/patient/login',
 };
 
-
 export const ERROR_CODES = { DOCTORS_NOT_FOUND: 'DOCTORS_NOT_FOUND' };
-
 
 export const SLOT_MINUTES = 30;
