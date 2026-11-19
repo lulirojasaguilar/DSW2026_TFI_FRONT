@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 import { getErrorMessage } from '../../shared/helpers/getErrorMessage';
 import { useAuth } from './useAuth';
 
-
 export function useLoginForm({
   authenticate,
   toSession,
@@ -40,4 +39,3 @@ export function useLoginForm({
     onSubmit: handleSubmit(onSubmit),
   };
 }
-
