@@ -6,7 +6,6 @@ import {
   saveSession,
 } from '../../shared/session/session';
 
-
 export function AuthProvider({ children }) {
   const [session, setSession] = useState(getSession);
 
