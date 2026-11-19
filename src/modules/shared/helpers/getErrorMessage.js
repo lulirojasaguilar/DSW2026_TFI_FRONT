@@ -1,4 +1,3 @@
-// Traduce un error de la API (formato errorCode / message / details) a un texto para la UI
 const getErrorMessage = (error) => {
   if (!error.response) {
     return 'No se pudo conectar con el servidor. Intente nuevamente.';
