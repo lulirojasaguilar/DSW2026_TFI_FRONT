@@ -2,7 +2,6 @@ import axios from 'axios';
 import { clearSession, getSession } from '../session/session';
 import { LOGIN_BY_ROLE } from '../constants';
 
-
 const instance = axios.create({ baseURL: '/api' });
 
 instance.interceptors.request.use(
