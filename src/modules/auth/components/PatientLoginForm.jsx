@@ -1,4 +1,4 @@
-import { ArrowRight, IdCard, Mail } from 'lucide-react';
+import { IdCard, Mail } from 'lucide-react';
 import Button from '../../shared/components/atoms/Button';
 import Alert from '../../shared/components/molecules/Alert';
 import FormField, {
@@ -24,7 +24,7 @@ export default function PatientLoginForm() {
           id="email"
           icon={Mail}
           type="email"
-          placeholder="ejemplo@correo.com"
+          placeholder="paciente@medportal.com"
           invalid={errors.email}
           {...register('email', {
             required: 'El correo es obligatorio.',
@@ -36,11 +36,7 @@ export default function PatientLoginForm() {
         />
       </FormField>
 
-      <FormField
-        label="DNI / Número de Identificación"
-        htmlFor="dni"
-        error={errors.dni?.message}
-      >
+      <FormField label="DNI" htmlFor="dni" error={errors.dni?.message}>
         <IconInput
           id="dni"
           icon={IdCard}
@@ -57,9 +53,13 @@ export default function PatientLoginForm() {
         />
       </FormField>
 
-      <Button type="submit" className="w-full" disabled={isSubmitting}>
-        {isSubmitting ? 'Ingresando...' : 'Ingresar al Portal Médico'}
-        <ArrowRight className="h-4 w-4" />
+      <Button
+        type="submit"
+        variant="dark"
+        className="h-12 w-full rounded-lg"
+        disabled={isSubmitting}
+      >
+        {isSubmitting ? 'Ingresando...' : 'Ingresar Paciente'}
       </Button>
     </form>
   );

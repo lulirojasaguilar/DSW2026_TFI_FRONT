@@ -9,3 +9,4 @@ export const loginPatient = ({ email, dni }) =>
   instance
     .post('/auth/patient/login', { email, dni: Number(dni) })
     .then((res) => res.data);
+

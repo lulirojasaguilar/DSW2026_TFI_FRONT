@@ -6,8 +6,7 @@ import {
   saveSession,
 } from '../../shared/session/session';
 
-// Expone la sesión a toda la app. No accede al almacenamiento: delega en session.js.
-// El estado inicial recupera la sesión guardada, así se mantiene al recargar la página.
+
 export function AuthProvider({ children }) {
   const [session, setSession] = useState(getSession);
 

@@ -1,12 +1,5 @@
 import { useState } from 'react';
-import {
-  CircleUser,
-  Eye,
-  EyeOff,
-  Lock,
-  LogIn,
-  ShieldCheck,
-} from 'lucide-react';
+import { ArrowRight, Eye, EyeOff, Lock, Mail, ShieldCheck } from 'lucide-react';
 import Button from '../../shared/components/atoms/Button';
 import Alert from '../../shared/components/molecules/Alert';
 import FormField, {
@@ -21,17 +14,17 @@ export default function AdminLoginForm() {
   const [showPassword, setShowPassword] = useState(false);
 
   return (
-    <div className="relative w-full max-w-[420px] overflow-hidden rounded-sm bg-white shadow-2xl">
+    <div className="w-full max-w-[460px] overflow-hidden rounded-2xl bg-white shadow-2xl">
       <form
         onSubmit={onSubmit}
         noValidate
-        className="space-y-4 px-5 py-6 sm:px-8 sm:pb-6 sm:pt-8"
+        className="space-y-5 px-6 py-8 sm:px-8"
       >
         <div>
-          <h1 className="text-sm font-medium text-[#00355f]">
+          <h1 className="text-2xl font-bold text-brand-900">
             Bienvenido de nuevo
           </h1>
-          <p className="mt-2 text-[15px] leading-6 text-[#1d2630]">
+          <p className="mt-2 text-sm text-muted">
             Por favor, autentíquese para acceder al portal de proveedores.
           </p>
         </div>
@@ -39,19 +32,19 @@ export default function AdminLoginForm() {
         <Alert>{apiError}</Alert>
 
         <FormField
-          label="Nombre de usuario"
+          label="Correo Electrónico"
           htmlFor="email"
           error={errors.email?.message}
         >
           <IconInput
             id="email"
-            icon={CircleUser}
+            icon={Mail}
             type="email"
             autoComplete="username"
-            placeholder="Ingrese ID de admin"
+            placeholder="admin@medportal.com"
             invalid={errors.email}
             {...register('email', {
-              required: 'El usuario es obligatorio.',
+              required: 'El correo es obligatorio.',
               pattern: {
                 value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
                 message: 'Ingrese un email válido.',
@@ -98,19 +91,19 @@ export default function AdminLoginForm() {
         <Button
           type="submit"
           variant="dark"
-          className="h-[52px] w-full rounded-[3px] bg-[#00355f] shadow-md hover:bg-[#002a4c] active:scale-[0.97]"
+          className="h-12 w-full rounded-lg"
           disabled={isSubmitting}
         >
           {isSubmitting ? 'Ingresando...' : 'Iniciar Sesión'}
-          <LogIn className="h-4 w-4" />
+          <ArrowRight className="h-4 w-4" />
         </Button>
       </form>
 
-      <div className="flex gap-3 border-t border-[#c9dcea] bg-[#e6f6ff] px-5 py-5 text-sm leading-relaxed text-[#1d2630] sm:px-8">
-        <ShieldCheck className="mt-1 h-4 w-4 shrink-0 text-[#0b6ba0]" />
+      <div className="flex gap-3 border-t border-brand-100 bg-brand-50 px-6 py-5 text-sm leading-relaxed text-muted sm:px-8">
+        <ShieldCheck className="mt-0.5 h-5 w-5 shrink-0 text-brand-700" />
         <p>
-          <strong className="text-black">Solo Acceso Seguro:</strong> Este
-          sistema es para personal médico autorizado. Los intentos de acceso no
+          <strong className="text-ink">Solo Acceso Seguro:</strong> Este sistema
+          es para personal médico autorizado. Los intentos de acceso no
           autorizados son registrados y monitoreados para su cumplimiento.
         </p>
       </div>
