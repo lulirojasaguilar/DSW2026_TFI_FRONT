@@ -1,24 +1,26 @@
-# Unidad 5
+# MedPortal – Frontend
 
-# Configuración
+Trabajo Práctico Integrador de Desarrollo de Software 2026 (UTN-FRT).
+Sistema de turnos médicos: panel del administrador y portal del paciente.
 
-Se agrego un archivo .env.development
-En este archivo tienes una variable de entorno llamada VITE_BACKEND_URL, debes cambiar su valor de acuerdo a la URL de tu backend.
+## Integrantes
 
-## Pasos de instalación
+| Integrante | Legajo |
+| --- | --- |
+| Campos, Ana Sofía | 60240 |
+| Risso Vergés, Ornella | 60465 |
+| Rojas Aguilar, Luz María | 60566 |
 
-### Ejecutar:
+## Cómo ejecutarlo
 
-`npm install`
+1. Levantar el backend (`Dsw2026Tpi.Api`). Por defecto corre en `http://localhost:5278`.
+2. Si el backend usa otro puerto, cambiar `VITE_BACKEND_URL` en `.env.development`.
+3. En esta carpeta, instalar las dependencias y arrancar:
 
-### Ejecutar lint
+```bash
+npm install
+npm run dev
+```
 
-`npm run lint`
 
-### Iniciar aplicación
-
-`npm run dev`
-
-### Crear archivos para producción
-
-`npm run build`
+Otros scripts: `npm run build`, `npm run lint` y `npm run format`.
