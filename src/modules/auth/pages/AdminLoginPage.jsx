@@ -5,7 +5,6 @@ import AdminLoginForm from '../components/AdminLoginForm';
 import AuthShell from '../components/AuthShell';
 import { useAuth } from '../hook/useAuth';
 
-
 export default function AdminLoginPage() {
   const { session } = useAuth();
 
