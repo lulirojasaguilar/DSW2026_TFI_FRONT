@@ -1,18 +1,23 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { getErrorMessage } from '../../../core/helpers/getErrorMessage';
 
 export function useApi(request, deps = []) {
   const [state, setState] = useState({ data: null, loading: true, error: '' });
   const [version, setVersion] = useState(0);
+  const requestRef = useRef(request);
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const run = useCallback(request, deps);
+  useEffect(() => {
+    requestRef.current = request;
+  });
+
+  const key = JSON.stringify(deps);
 
   useEffect(() => {
     let cancelled = false;
 
     setState((prev) => ({ ...prev, loading: true, error: '' }));
-    run()
+    requestRef
+      .current()
       .then(
         (data) => !cancelled && setState({ data, loading: false, error: '' })
       )
@@ -29,7 +34,7 @@ export function useApi(request, deps = []) {
     return () => {
       cancelled = true;
     };
-  }, [run, version]);
+  }, [key, version]);
 
   return { ...state, reload: () => setVersion((v) => v + 1) };
 }
