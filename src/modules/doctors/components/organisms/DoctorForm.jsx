@@ -1,13 +1,12 @@
 import { Link } from 'react-router-dom';
 import { IdCard, Save, Tag, User, UserRoundPlus } from 'lucide-react';
-import Button from '../../shared/components/atoms/Button';
-import Alert from '../../shared/components/molecules/Alert';
+import Button from '../../../shared/components/atoms/Button';
+import Alert from '../../../shared/components/molecules/Alert';
 import FormField, {
   IconInput,
   controlClass,
-} from '../../shared/components/molecules/FormField';
+} from '../../../shared/components/molecules/FormField';
 
-// Organismo: tarjeta con el formulario de doctor. Recibe todo lo que usa desde el hook.
 export default function DoctorForm({
   isEdit,
   register,

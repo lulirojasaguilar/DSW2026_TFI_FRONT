@@ -1,7 +1,6 @@
-import Avatar from '../../shared/components/atoms/Avatar';
-import { controlClass } from '../../shared/components/molecules/FormField';
+import Avatar from '../../../shared/components/atoms/Avatar';
+import { controlClass } from '../../../shared/components/molecules/FormField';
 
-// Organismo: selector de profesional + tarjeta con sus datos
 export default function DoctorPicker({ doctors, doctorId, doctor, onChange }) {
   return (
     <section className="rounded-lg border border-brand-100 bg-white p-4 shadow-sm">

@@ -1,10 +1,9 @@
-import Switch from '../../shared/components/atoms/Switch';
-import { controlClass } from '../../shared/components/molecules/FormField';
-import { SCHEDULE_DAYS, dayLabel } from '../hook/useDoctorSchedule';
+import Switch from '../../../shared/components/atoms/Switch';
+import { controlClass } from '../../../shared/components/molecules/FormField';
+import { SCHEDULE_DAYS, dayLabel } from '../../hook/useDoctorSchedule';
 
 const TIME_INPUT = `${controlClass} w-32 py-2 disabled:bg-slate-100`;
 
-// Molécula: una fila (día + switch + entrada + salida)
 function ScheduleRow({ day, row, onChange }) {
   return (
     <tr className={row.active ? '' : 'text-slate-400'}>
@@ -43,7 +42,6 @@ function ScheduleRow({ day, row, onChange }) {
   );
 }
 
-// Organismo: tabla editable de los 7 días de la semana
 export default function ScheduleTable({ rows, onDayChange }) {
   return (
     <div className="overflow-x-auto">

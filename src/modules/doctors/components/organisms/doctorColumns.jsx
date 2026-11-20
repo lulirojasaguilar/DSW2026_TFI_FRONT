@@ -1,11 +1,9 @@
 import { Link } from 'react-router-dom';
 import { Eye, Pencil, Trash2 } from 'lucide-react';
-import ActionButton from '../../shared/components/atoms/ActionButton';
-import Badge from '../../shared/components/atoms/Badge';
-import Avatar from '../../shared/components/atoms/Avatar';
+import ActionButton from '../../../shared/components/atoms/ActionButton';
+import Badge from '../../../shared/components/atoms/Badge';
+import Avatar from '../../../shared/components/atoms/Avatar';
 
-// Columnas de la tabla de doctores para el componente Table genérico.
-// Sin "actions" se obtiene la versión de solo lectura (panel).
 export function doctorColumns(actions) {
   const columns = [
     {
@@ -24,7 +22,7 @@ export function doctorColumns(actions) {
     {
       key: 'specialty',
       header: 'Especialidad',
-      // En el listado (con acciones) la especialidad se ve como etiqueta, igual que el mockup
+
       render: (doctor) =>
         actions ? (
           <Badge tone="blue">{doctor.specialty?.name}</Badge>
@@ -34,7 +32,6 @@ export function doctorColumns(actions) {
     },
   ];
 
-  // Panel (solo lectura): "Ver Detalle" lleva a la página de doctores (mockup v1.4)
   if (!actions) {
     return [
       ...columns,
