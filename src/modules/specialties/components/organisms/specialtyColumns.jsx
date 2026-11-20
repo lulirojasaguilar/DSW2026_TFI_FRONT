@@ -1,6 +1,6 @@
 import { Pencil, Trash2 } from 'lucide-react';
-import ActionButton from '../../shared/components/atoms/ActionButton';
-import { specialtyIcon } from '../utils/specialtyIcon';
+import ActionButton from '../../../shared/components/atoms/ActionButton';
+import { specialtyIcon } from '../../utils/specialtyIcon';
 
 export function specialtyColumns({ onDelete }) {
   return [

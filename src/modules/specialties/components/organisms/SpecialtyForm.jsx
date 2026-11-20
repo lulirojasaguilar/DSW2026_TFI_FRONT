@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom';
 import { Save } from 'lucide-react';
-import Button from '../../shared/components/atoms/Button';
-import Alert from '../../shared/components/molecules/Alert';
+import Button from '../../../shared/components/atoms/Button';
+import Alert from '../../../shared/components/molecules/Alert';
 import FormField, {
   controlClass,
-} from '../../shared/components/molecules/FormField';
+} from '../../../shared/components/molecules/FormField';
 
 export default function SpecialtyForm({
   register,
