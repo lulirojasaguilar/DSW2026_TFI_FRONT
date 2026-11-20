@@ -1,6 +1,5 @@
-import Avatar from '../../shared/components/atoms/Avatar';
+import Avatar from '../../../shared/components/atoms/Avatar';
 
-// Molécula: tarjeta con los datos del doctor elegido (recibe solo lo que muestra)
 export default function DoctorSummaryCard({ name, specialty, licenseNumber }) {
   return (
     <section className="mt-4 flex items-center gap-4 rounded-xl border border-brand-100 bg-white p-4 shadow-sm">

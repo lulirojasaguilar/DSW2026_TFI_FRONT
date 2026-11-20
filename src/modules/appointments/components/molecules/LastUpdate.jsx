@@ -3,14 +3,12 @@ import { RefreshCw } from 'lucide-react';
 
 const TICK_MS = 30000;
 
-// "hace un momento" / "hace 3 min" según cuándo llegó el último resultado
 const timeAgo = (since) => {
   const minutes = Math.floor((Date.now() - since.getTime()) / 60000);
 
   return minutes < 1 ? 'hace un momento' : `hace ${minutes} min`;
 };
 
-// Molécula: indicador de última actualización de la búsqueda (se refresca solo)
 export default function LastUpdate({ updatedAt }) {
   const [, setTick] = useState(0);
 

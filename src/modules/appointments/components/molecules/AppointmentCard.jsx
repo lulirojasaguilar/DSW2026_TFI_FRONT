@@ -1,5 +1,5 @@
-import Badge from '../../shared/components/atoms/Badge';
-import { shortTime } from '../../shared/utils/dates';
+import Badge from '../../../shared/components/atoms/Badge';
+import { shortTime } from '../../../shared/utils/dates';
 
 const STATUS = {
   BOOKED: { text: 'Confirmado', tone: 'green' },
@@ -8,7 +8,6 @@ const STATUS = {
   NO_SHOW: { text: 'No asistió', tone: 'amber' },
 };
 
-// Tarjeta de un turno del paciente (mockup "Mis Turnos"). Solo los reservados se pueden cancelar.
 export default function AppointmentCard({ item, onCancel }) {
   const status = STATUS[item.status] ?? { text: item.status, tone: 'gray' };
 

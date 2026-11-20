@@ -1,15 +1,14 @@
 import { CalendarCheck, CalendarDays, CircleCheck } from 'lucide-react';
-import Button from '../../shared/components/atoms/Button';
-import { controlClass } from '../../shared/components/molecules/FormField';
-import { SLOT_MINUTES } from '../../shared/constants';
+import Button from '../../../shared/components/atoms/Button';
+import { controlClass } from '../../../shared/components/molecules/FormField';
+import { SLOT_MINUTES } from '../../../shared/constants';
 import {
   dayName,
   formatFullDate,
   formatLongDate,
   fromIsoDate,
-} from '../../shared/utils/dates';
+} from '../../../shared/utils/dates';
 
-// Organismo: resumen del turno elegido + motivo de la consulta + botón de confirmar
 export default function SelectionSummary({
   selected,
   reason,

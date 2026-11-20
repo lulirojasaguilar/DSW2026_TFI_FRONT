@@ -1,4 +1,4 @@
-import { formatTime12 } from '../../shared/utils/dates';
+import { formatTime12 } from '../../../shared/utils/dates';
 
 const STYLES = {
   desktop: {
@@ -11,7 +11,6 @@ const STYLES = {
   },
 };
 
-// Átomo/molécula: un horario. En mobile se muestra en formato de 12 horas (08:30 AM).
 export default function SlotButton({
   time,
   selected,

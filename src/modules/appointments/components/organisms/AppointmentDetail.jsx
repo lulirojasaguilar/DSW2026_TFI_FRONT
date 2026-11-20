@@ -1,7 +1,6 @@
-import { formatLongDate, shortTime } from '../../shared/utils/dates';
-import StatusLabel from './StatusLabel';
+import { formatLongDate, shortTime } from '../../../shared/utils/dates';
+import StatusLabel from '../atoms/StatusLabel';
 
-// Un dato del detalle: etiqueta chica + valor
 function Field({ label, children }) {
   return (
     <div>
@@ -13,7 +12,6 @@ function Field({ label, children }) {
   );
 }
 
-// Organismo: ficha de solo lectura de un turno
 export default function AppointmentDetail({ appointment }) {
   const { date, startTime, endTime, patient, doctor } = appointment;
 

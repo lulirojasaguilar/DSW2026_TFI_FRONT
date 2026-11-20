@@ -1,10 +1,9 @@
 import { Search } from 'lucide-react';
-import Button from '../../shared/components/atoms/Button';
-import SelectField from '../../shared/components/molecules/SelectField';
+import Button from '../../../shared/components/atoms/Button';
+import SelectField from '../../../shared/components/molecules/SelectField';
 
 const toOption = (item) => ({ value: item.id, label: item.name });
 
-// Organismo: filtros de la reserva (especialidad + doctor + botón buscar)
 export default function BookingFilters({
   specialties,
   doctors,

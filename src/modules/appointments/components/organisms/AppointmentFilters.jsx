@@ -1,13 +1,12 @@
 import { useForm } from 'react-hook-form';
 import { Calendar, ListFilter, Search } from 'lucide-react';
-import Button from '../../shared/components/atoms/Button';
-import { controlClass } from '../../shared/components/molecules/FormField';
-import SelectField from '../../shared/components/molecules/SelectField';
-import LastUpdate from './LastUpdate';
+import Button from '../../../shared/components/atoms/Button';
+import { controlClass } from '../../../shared/components/molecules/FormField';
+import SelectField from '../../../shared/components/molecules/SelectField';
+import LastUpdate from '../molecules/LastUpdate';
 
 const toOption = (item) => ({ value: item.id, label: item.name });
 
-// Organismo: formulario de criterios de búsqueda (react-hook-form). Al enviar llama a onApply(values).
 export default function AppointmentFilters({
   specialties,
   doctors,

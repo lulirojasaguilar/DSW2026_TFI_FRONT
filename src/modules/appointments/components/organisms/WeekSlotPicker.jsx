@@ -1,8 +1,8 @@
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-import Spinner from '../../shared/components/atoms/Spinner';
-import { SLOT_MINUTES } from '../../shared/constants';
-import { monthName, toIsoDate } from '../../shared/utils/dates';
-import SlotButton from './SlotButton';
+import Spinner from '../../../shared/components/atoms/Spinner';
+import { SLOT_MINUTES } from '../../../shared/constants';
+import { monthName, toIsoDate } from '../../../shared/utils/dates';
+import SlotButton from '../atoms/SlotButton';
 
 const SHORT_DAYS = ['DOM', 'LUN', 'MAR', 'MIE', 'JUE', 'VIE', 'SAB'];
 const NO_SLOTS = 'No hay turnos disponibles para este día.';
@@ -10,7 +10,6 @@ const NO_SLOTS = 'No hay turnos disponibles para este día.';
 const isSelected = (selected, slot) =>
   selected?.date === slot.date && selected.startTime === slot.startTime;
 
-// Escritorio: encabezado con la semana y la leyenda
 function WeekHeader({ weekDays, onWeekChange }) {
   const last = weekDays[weekDays.length - 1];
   const month = monthName(last).replace(/^./, (char) => char.toUpperCase());
@@ -50,7 +49,6 @@ function WeekHeader({ weekDays, onWeekChange }) {
   );
 }
 
-// Escritorio: la semana en 5 columnas
 function WeekColumns({ weekDays, slotsOf, selected, onSelect }) {
   return (
     <div className="hidden grid-cols-5 divide-x divide-brand-100 md:grid">
@@ -86,7 +84,6 @@ function WeekColumns({ weekDays, slotsOf, selected, onSelect }) {
   );
 }
 
-// Mobile: chips de días + grilla de horarios de 30 min
 function DayChips({
   weekDays,
   slotsOf,
@@ -157,7 +154,6 @@ function DayChips({
   );
 }
 
-// Organismo: selector de turnos de la semana (versión escritorio y versión mobile)
 export default function WeekSlotPicker({
   weekDays,
   slots,

@@ -1,9 +1,8 @@
 import { Link } from 'react-router-dom';
 import { Stethoscope } from 'lucide-react';
-import { formatShortDate, shortTime } from '../../shared/utils/dates';
-import StatusLabel from './StatusLabel';
+import { formatShortDate, shortTime } from '../../../shared/utils/dates';
+import StatusLabel from '../atoms/StatusLabel';
 
-// Columnas de "Registros de Citas" (búsqueda del administrador)
 export const searchColumns = [
   {
     key: 'date',
