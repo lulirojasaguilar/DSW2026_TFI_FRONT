@@ -1,14 +1,17 @@
 import { Navigate } from 'react-router-dom';
-import useAuth from '../hook/useAuth';
+import { useAuth } from '../hook/useAuth';
+import { LOGIN_BY_ROLE } from '../../shared/constants';
 
-function ProtectedRoute({ children, redirectTo = '/login' }) {
-  const { isAuthenticated } = useAuth();
+export default function ProtectedRoute({ role, children }) {
+  const { session, isAuthenticated } = useAuth();
 
   if (!isAuthenticated) {
-    return <Navigate to={redirectTo} replace />;
+    return <Navigate to={LOGIN_BY_ROLE[role] ?? '/login'} replace />;
+  }
+
+  if (role && session.role !== role) {
+    return <Navigate to="/access-denied" replace />;
   }
 
   return children;
 }
-
-export default ProtectedRoute;

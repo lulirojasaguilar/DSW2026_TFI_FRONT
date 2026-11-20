@@ -1,16 +1,15 @@
 import axios from 'axios';
+import { clearSession, getSession } from '../session/session';
+import { LOGIN_BY_ROLE } from '../constants';
 
-const instance = axios.create({
-  baseURL: import.meta.env.VITE_BACKEND_URL,
-  withCredentials: true,
-});
+const instance = axios.create({ baseURL: '/api' });
 
 instance.interceptors.request.use(
   (config) => {
-    const token = localStorage.getItem('token');
+    const session = getSession();
 
-    if (token) {
-      config.headers.Authorization = `Bearer ${token}`;
+    if (session) {
+      config.headers.Authorization = `Bearer ${session.token}`;
     }
 
     return config;
@@ -18,18 +17,17 @@ instance.interceptors.request.use(
   (error) => Promise.reject(error)
 );
 
+// Token vencido o inválido: se limpia la sesión y se vuelve al login que corresponda
 instance.interceptors.response.use(
-  (config) => {
-    return config;
-  },
+  (response) => response,
   (error) => {
-    if (error.status === 401) {
-      if (window.location.pathname.includes('/admin/')) {
-        localStorage.clear();
-        window.location.href = '/login';
-      } else {
-        localStorage.removeItem('token');
-      }
+    const isLoginCall = error.config?.url?.includes('/auth/');
+
+    if (error.response?.status === 401 && !isLoginCall) {
+      const session = getSession();
+
+      clearSession();
+      window.location.href = LOGIN_BY_ROLE[session?.role] ?? '/login';
     }
 
     return Promise.reject(error);
