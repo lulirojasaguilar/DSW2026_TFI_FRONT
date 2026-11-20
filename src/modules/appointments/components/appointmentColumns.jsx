@@ -37,10 +37,14 @@ export const searchColumns = [
     header: 'Paciente',
     render: (item) => (
       <div className="leading-tight">
-        <p className="font-bold text-ink">
-          {item.patient?.fullName || 'Sin nombre'}
-        </p>
-        <p className="text-xs text-muted">DNI: {item.patient?.dni}</p>
+        {item.patient?.fullName ? (
+          <>
+            <p className="font-bold text-ink">{item.patient.fullName}</p>
+            <p className="text-xs text-muted">DNI: {item.patient.dni}</p>
+          </>
+        ) : (
+          <p className="font-bold text-ink">DNI: {item.patient?.dni}</p>
+        )}
       </div>
     ),
   },
