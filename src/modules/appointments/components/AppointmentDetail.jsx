@@ -30,7 +30,7 @@ export default function AppointmentDetail({ appointment }) {
       </Field>
       <Field label="Especialidad">{doctor.specialty.name}</Field>
       <Field label="Doctor">{doctor.name}</Field>
-      <Field label="Paciente">{patient?.fullName || 'Sin nombre'}</Field>
+      {patient?.fullName && <Field label="Paciente">{patient.fullName}</Field>}
       <Field label="DNI del paciente">{patient?.dni}</Field>
       <Field label="Identificador del turno">
         <span className="break-all text-xs font-normal text-muted">
