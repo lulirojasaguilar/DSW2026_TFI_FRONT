@@ -8,6 +8,6 @@
   input,
   select,
   textarea {
-    @apply border border-med-border rounded-lg p-2 bg-white text-med-text-main transition focus:outline-none focus:ring-2 focus:ring-med-primary-600 focus:border-transparent;
+    @apply focus:outline-none focus:ring-2 focus:ring-brand-700 focus:border-transparent;
   }
 }
