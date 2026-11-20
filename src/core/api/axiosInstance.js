@@ -1,6 +1,9 @@
 import axios from 'axios';
-import { clearSession, getSession } from '../session/session';
-import { LOGIN_BY_ROLE } from '../constants';
+import {
+  clearSession,
+  getSession,
+  SESSION_EXPIRED_EVENT,
+} from '../session/session';
 
 const instance = axios.create({ baseURL: '/api' });
 
@@ -17,17 +20,14 @@ instance.interceptors.request.use(
   (error) => Promise.reject(error)
 );
 
-// Token vencido o inválido: se limpia la sesión y se vuelve al login que corresponda
 instance.interceptors.response.use(
   (response) => response,
   (error) => {
     const isLoginCall = error.config?.url?.includes('/auth/');
 
     if (error.response?.status === 401 && !isLoginCall) {
-      const session = getSession();
-
       clearSession();
-      window.location.href = LOGIN_BY_ROLE[session?.role] ?? '/login';
+      window.dispatchEvent(new Event(SESSION_EXPIRED_EVENT));
     }
 
     return Promise.reject(error);
