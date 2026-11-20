@@ -3,10 +3,9 @@ import { Plus } from 'lucide-react';
 import Alert from '../../shared/components/molecules/Alert';
 import ConfirmDialog from '../../shared/components/molecules/ConfirmDialog';
 import Spinner from '../../shared/components/atoms/Spinner';
-import AppointmentCard from '../components/AppointmentCard';
+import AppointmentCard from '../components/molecules/AppointmentCard';
 import { useMyAppointments } from '../hook/useMyAppointments';
 
-// Home del paciente ("Mis Turnos Médicos"): una tarjeta por turno activo
 export default function MyAppointmentsPage() {
   const mine = useMyAppointments();
   const { appointments } = mine;

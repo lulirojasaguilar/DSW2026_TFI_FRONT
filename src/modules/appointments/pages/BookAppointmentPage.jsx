@@ -1,11 +1,10 @@
 import Alert from '../../shared/components/molecules/Alert';
-import BookingFilters from '../components/BookingFilters';
-import DoctorSummaryCard from '../components/DoctorSummaryCard';
-import SelectionSummary from '../components/SelectionSummary';
-import WeekSlotPicker from '../components/WeekSlotPicker';
+import BookingFilters from '../components/organisms/BookingFilters';
+import DoctorSummaryCard from '../components/molecules/DoctorSummaryCard';
+import SelectionSummary from '../components/organisms/SelectionSummary';
+import WeekSlotPicker from '../components/organisms/WeekSlotPicker';
 import { useBookAppointment } from '../hook/useBookAppointment';
 
-// Página: solo compone los organismos con lo que expone el hook
 export default function BookAppointmentPage() {
   const booking = useBookAppointment();
   const { doctor } = booking;
