@@ -1,8 +1,8 @@
 import { Link, Navigate } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import { ROLES } from '../../shared/constants';
-import AuthShell from '../components/AuthShell';
-import PatientLoginForm from '../components/PatientLoginForm';
+import AuthShell from '../components/templates/AuthShell';
+import PatientLoginForm from '../components/organisms/PatientLoginForm';
 import { useAuth } from '../hook/useAuth';
 
 export default function PatientLoginPage() {

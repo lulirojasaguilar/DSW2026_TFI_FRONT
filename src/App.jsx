@@ -4,8 +4,8 @@ import {
   RouterProvider,
 } from 'react-router-dom';
 import { AuthProvider } from './modules/auth/context/AuthProvider';
-import ProtectedRoute from './modules/auth/components/ProtectedRoute';
-import RootRedirect from './modules/auth/components/RootRedirect';
+import ProtectedRoute from './modules/auth/components/routing/ProtectedRoute';
+import RootRedirect from './modules/auth/components/routing/RootRedirect';
 import { ROLES } from './modules/shared/constants';
 
 import AdminLayout from './modules/shared/components/templates/AdminLayout';

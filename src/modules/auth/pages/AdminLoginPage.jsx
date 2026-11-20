@@ -1,8 +1,8 @@
 import { Link, Navigate } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 import { ROLES } from '../../shared/constants';
-import AdminLoginForm from '../components/AdminLoginForm';
-import AuthShell from '../components/AuthShell';
+import AdminLoginForm from '../components/organisms/AdminLoginForm';
+import AuthShell from '../components/templates/AuthShell';
 import { useAuth } from '../hook/useAuth';
 
 export default function AdminLoginPage() {

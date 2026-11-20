@@ -1,5 +1,5 @@
 import Breadcrumb from '../../shared/components/molecules/Breadcrumb';
-import SpecialtyForm from '../components/SpecialtyForm';
+import SpecialtyForm from '../components/organisms/SpecialtyForm';
 import { useSpecialtyForm } from '../hook/useSpecialtyForm';
 
 export default function SpecialtyFormPage() {

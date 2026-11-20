@@ -6,10 +6,9 @@ import ConfirmDialog from '../../shared/components/molecules/ConfirmDialog';
 import PageHeader from '../../shared/components/molecules/PageHeader';
 import SearchInput from '../../shared/components/molecules/SearchInput';
 import Table from '../../shared/components/organisms/Table';
-import { doctorColumns } from '../components/doctorColumns';
+import { doctorColumns } from '../components/organisms/doctorColumns';
 import { useDoctorsList } from '../hook/useDoctorsList';
 
-// Página: compone los componentes con lo que expone el hook
 export default function DoctorsListPage() {
   const list = useDoctorsList();
   const { doctors, deletion } = list;

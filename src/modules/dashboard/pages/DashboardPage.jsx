@@ -6,14 +6,13 @@ import PageHeader from '../../shared/components/molecules/PageHeader';
 import SearchInput from '../../shared/components/molecules/SearchInput';
 import StatCard from '../../shared/components/molecules/StatCard';
 import Table from '../../shared/components/organisms/Table';
-import { doctorColumns } from '../../doctors/components/doctorColumns';
+import { doctorColumns } from '../../doctors/components/organisms/doctorColumns';
 import { useDoctorsPage } from '../../doctors/hook/useDoctorsPage';
 import { useDashboardTotals } from '../hook/useDashboardTotals';
 
 const PAGE_SIZE = 3;
 const EMPTY = '–';
 
-// Página: compone los componentes con lo que exponen los hooks
 export default function DashboardPage() {
   const page = useDoctorsPage(PAGE_SIZE);
   const totals = useDashboardTotals();
