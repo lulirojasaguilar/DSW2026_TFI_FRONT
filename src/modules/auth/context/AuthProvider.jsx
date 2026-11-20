@@ -1,10 +1,12 @@
-import { useCallback, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { AuthContext } from './AuthContext';
 import {
   clearSession,
   getSession,
+  getTokenExpiry,
   saveSession,
-} from '../../shared/session/session';
+  SESSION_EXPIRED_EVENT,
+} from '../../../core/session/session';
 
 export function AuthProvider({ children }) {
   const [session, setSession] = useState(getSession);
@@ -19,9 +21,37 @@ export function AuthProvider({ children }) {
     setSession(null);
   }, []);
 
+  useEffect(() => {
+    window.addEventListener(SESSION_EXPIRED_EVENT, logout);
+
+    return () => window.removeEventListener(SESSION_EXPIRED_EVENT, logout);
+  }, [logout]);
+
+  useEffect(() => {
+    const expiry = session ? getTokenExpiry(session.token) : null;
+
+    if (expiry === null) return undefined;
+
+    const timer = setTimeout(logout, Math.max(expiry - Date.now(), 0));
+
+    return () => clearTimeout(timer);
+  }, [session, logout]);
+
+  const hasRole = useCallback(
+    (...roles) => roles.includes(session?.role),
+    [session]
+  );
+
   const value = useMemo(
-    () => ({ session, isAuthenticated: Boolean(session), login, logout }),
-    [session, login, logout]
+    () => ({
+      session,
+      role: session?.role ?? null,
+      isAuthenticated: Boolean(session),
+      hasRole,
+      login,
+      logout,
+    }),
+    [session, hasRole, login, logout]
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
