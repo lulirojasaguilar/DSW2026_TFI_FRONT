@@ -5,11 +5,10 @@ import AuthShell from '../components/AuthShell';
 import PatientLoginForm from '../components/PatientLoginForm';
 import { useAuth } from '../hook/useAuth';
 
-// Página: marca del mockup + tarjeta con el formulario de login del paciente
 export default function PatientLoginPage() {
-  const { session } = useAuth();
+  const { hasRole } = useAuth();
 
-  if (session?.role === ROLES.PATIENT) {
+  if (hasRole(ROLES.PATIENT)) {
     return <Navigate to="/patient" replace />;
   }
 

@@ -5,8 +5,8 @@ import { HOME_BY_ROLE } from '../../shared/constants';
 import { useAuth } from '../hook/useAuth';
 
 export default function AccessDeniedPage() {
-  const { session, logout } = useAuth();
-  const home = HOME_BY_ROLE[session?.role] ?? '/login';
+  const { role, isAuthenticated, logout } = useAuth();
+  const home = HOME_BY_ROLE[role] ?? '/login';
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-surface px-4">
@@ -24,7 +24,7 @@ export default function AccessDeniedPage() {
               Volver a mi inicio
             </Button>
           </Link>
-          {session && (
+          {isAuthenticated && (
             <Button variant="ghost" onClick={logout}>
               Cerrar sesión
             </Button>

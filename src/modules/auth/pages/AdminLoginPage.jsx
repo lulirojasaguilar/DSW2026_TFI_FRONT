@@ -6,9 +6,9 @@ import AuthShell from '../components/AuthShell';
 import { useAuth } from '../hook/useAuth';
 
 export default function AdminLoginPage() {
-  const { session } = useAuth();
+  const { hasRole } = useAuth();
 
-  if (session?.role === ROLES.ADMIN) return <Navigate to="/app" replace />;
+  if (hasRole(ROLES.ADMIN)) return <Navigate to="/app" replace />;
 
   return (
     <AuthShell

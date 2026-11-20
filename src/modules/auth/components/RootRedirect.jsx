@@ -3,14 +3,9 @@ import { useAuth } from '../hook/useAuth';
 import { HOME_BY_ROLE } from '../../shared/constants';
 
 function RootRedirect() {
-  const { session } = useAuth();
+  const { role } = useAuth();
 
-  return (
-    <Navigate
-      to={session ? HOME_BY_ROLE[session.role] : '/patient/login'}
-      replace
-    />
-  );
+  return <Navigate to={role ? HOME_BY_ROLE[role] : '/patient/login'} replace />;
 }
 
 export default RootRedirect;
