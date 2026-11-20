@@ -1,5 +1,5 @@
 import Breadcrumb from '../../shared/components/molecules/Breadcrumb';
-import DoctorForm from './components/DoctorForm';
+import DoctorForm from '../components/DoctorForm';
 import { useDoctorForm } from '../hook/useDoctorForm';
 
 // Página: migas de pan + el formulario con lo que expone el hook
