@@ -1,8 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
-import { getErrorMessage } from '../helpers/getErrorMessage';
+import { getErrorMessage } from '../../../core/helpers/getErrorMessage';
 
-// Custom hook: ejecuta una llamada a la API al montar (y cuando cambian las dependencias)
-// y expone data / loading / error / reload.
 export function useApi(request, deps = []) {
   const [state, setState] = useState({ data: null, loading: true, error: '' });
   const [version, setVersion] = useState(0);

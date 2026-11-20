@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { getErrorMessage } from '../../shared/helpers/getErrorMessage';
+import { getErrorMessage } from '../../../core/helpers/getErrorMessage';
 import { useApi } from '../../shared/hook/useApi';
 import {
   getDoctorAvailabilities,
@@ -25,7 +25,6 @@ const emptyRows = () =>
     SCHEDULE_DAYS.map((day) => [day, { active: false, start: '', end: '' }])
   );
 
-// Convierte las reglas que devuelve la API en las filas del formulario
 const rowsFromRules = (rules) => {
   const next = emptyRows();
 
@@ -44,7 +43,6 @@ const rowsFromRules = (rules) => {
   return next;
 };
 
-// Lógica de "Disponibilidad horaria": doctor elegido (por URL), filas editables y guardado
 export function useDoctorSchedule() {
   const { id } = useParams();
   const navigate = useNavigate();

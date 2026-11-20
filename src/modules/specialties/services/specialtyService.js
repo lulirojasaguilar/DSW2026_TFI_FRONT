@@ -1,4 +1,4 @@
-import { instance } from '../../shared/api/axiosInstance';
+import { instance } from '../../../core/api/axiosInstance';
 
 export const getSpecialties = ({ pageSize = 10, pageIndex = 1, name } = {}) =>
   instance

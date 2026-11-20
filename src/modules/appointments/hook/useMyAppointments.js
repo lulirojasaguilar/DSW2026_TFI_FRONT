@@ -1,13 +1,12 @@
 import { useState } from 'react';
 import { useAuth } from '../../auth/hook/useAuth';
-import { getErrorMessage } from '../../shared/helpers/getErrorMessage';
+import { getErrorMessage } from '../../../core/helpers/getErrorMessage';
 import { useApi } from '../../shared/hook/useApi';
 import {
   cancelAppointment,
   getPatientAppointments,
 } from '../services/appointmentService';
 
-// Lógica de "Mis turnos": listado del paciente logueado y cancelación con confirmación
 export function useMyAppointments() {
   const { session } = useAuth();
   const [toCancel, setToCancel] = useState(null);

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
-import { getErrorMessage } from '../../shared/helpers/getErrorMessage';
+import { getErrorMessage } from '../../../core/helpers/getErrorMessage';
 import {
   createSpecialty,
   getSpecialties,
@@ -21,7 +21,6 @@ export function useSpecialtyForm() {
     formState: { errors, isSubmitting },
   } = useForm({ defaultValues: { name: '', description: '' } });
 
-  // En edición se usa la especialidad recibida desde el listado; si se entra directo, se busca en la API
   useEffect(() => {
     if (!isEdit) return;
 
