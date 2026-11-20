@@ -1,11 +1,6 @@
 import { useState } from 'react';
-import { getErrorMessage } from '../helpers/getErrorMessage';
+import { getErrorMessage } from '../../../core/helpers/getErrorMessage';
 
-// Flujo de borrado lógico con confirmación.
-// - remove(item): hace el DELETE
-// - successMessage(item): texto cuando se borró bien
-// - onRemoved(item): qué hacer al terminar bien (recargar, volver de página...)
-// Si el backend rechaza el borrado (ej: 409 por turnos reservados), se muestra su mensaje.
 export function useDeleteItem({ remove, successMessage, onRemoved }) {
   const [toDelete, setToDelete] = useState(null);
   const [busy, setBusy] = useState(false);

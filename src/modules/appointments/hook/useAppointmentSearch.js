@@ -1,13 +1,12 @@
 import { useCallback, useEffect, useState } from 'react';
 import { getDoctors } from '../../doctors/services/doctorService';
-import { getErrorMessage } from '../../shared/helpers/getErrorMessage';
+import { getErrorMessage } from '../../../core/helpers/getErrorMessage';
 import { useApi } from '../../shared/hook/useApi';
 import { getSpecialties } from '../../specialties/services/specialtyService';
 import { searchAppointments } from '../services/appointmentService';
 
 const PAGE_SIZE = 3;
 
-// Lógica de la búsqueda avanzada: opciones de los filtros, filtros aplicados, página y resultado
 export function useAppointmentSearch() {
   const [filters, setFilters] = useState({});
   const [pageIndex, setPageIndex] = useState(1);
@@ -44,7 +43,6 @@ export function useAppointmentSearch() {
     run();
   }, [run]);
 
-  // "Nombre o DNI del Paciente": el backend filtra por DNI
   const applyFilters = (values) => {
     setPageIndex(1);
     setFilters({

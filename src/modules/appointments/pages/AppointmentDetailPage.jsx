@@ -4,10 +4,9 @@ import Spinner from '../../shared/components/atoms/Spinner';
 import Alert from '../../shared/components/molecules/Alert';
 import Breadcrumb from '../../shared/components/molecules/Breadcrumb';
 import PageHeader from '../../shared/components/molecules/PageHeader';
-import AppointmentDetail from '../components/AppointmentDetail';
+import AppointmentDetail from '../components/organisms/AppointmentDetail';
 import { useAppointmentDetail } from '../hook/useAppointmentDetail';
 
-// Página "Ver Detalle" de la búsqueda de turnos (solo lectura)
 export default function AppointmentDetailPage() {
   const detail = useAppointmentDetail();
 

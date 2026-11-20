@@ -5,11 +5,11 @@ Sistema de turnos médicos: panel del administrador y portal del paciente.
 
 ## Integrantes
 
-| Integrante | Legajo |
-| --- | --- |
-| Campos, Ana Sofía | 60240 |
-| Risso Vergés, Ornella | 60465 |
-| Rojas Aguilar, Luz María | 60566 |
+| Integrante               | Legajo |
+| ------------------------ | ------ |
+| Campos, Ana Sofía        | 60240  |
+| Risso Vergés, Ornella    | 60465  |
+| Rojas Aguilar, Luz María | 60566  |
 
 ## Cómo ejecutarlo
 
@@ -21,6 +21,5 @@ Sistema de turnos médicos: panel del administrador y portal del paciente.
 npm install
 npm run dev
 ```
-
 
 Otros scripts: `npm run build`, `npm run lint` y `npm run format`.

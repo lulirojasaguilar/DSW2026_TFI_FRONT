@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate, useParams } from 'react-router-dom';
-import { getErrorMessage } from '../../shared/helpers/getErrorMessage';
+import { getErrorMessage } from '../../../core/helpers/getErrorMessage';
 import { useApi } from '../../shared/hook/useApi';
 import { getSpecialties } from '../../specialties/services/specialtyService';
 import {
@@ -10,7 +10,6 @@ import {
   updateDoctor,
 } from '../services/doctorService';
 
-// Lógica del alta / edición de doctor: carga del doctor (si se edita), especialidades y guardado
 export function useDoctorForm() {
   const { id } = useParams();
   const isEdit = Boolean(id);
@@ -34,7 +33,6 @@ export function useDoctorForm() {
     return data.find((item) => item.id === id) ?? null;
   }, [id]);
 
-  // Al llegar el doctor a editar (y las especialidades) se cargan los valores en el form
   useEffect(() => {
     if (doctor.data && specialties.data) {
       reset({

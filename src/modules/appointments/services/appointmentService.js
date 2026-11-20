@@ -1,4 +1,4 @@
-import { instance } from '../../shared/api/axiosInstance';
+import { instance } from '../../../core/api/axiosInstance';
 import {
   WEEK_DAYS_API,
   fromIsoDate,
@@ -8,7 +8,6 @@ import {
 } from '../../shared/utils/dates';
 import { getDoctorAvailabilities } from '../../doctors/services/doctorService';
 
-// La API puede responder con las claves del enunciado (appointmentsId) o con las del backend (id)
 export const normalizeAppointment = (item) => ({
   id: item.id ?? item.appointmentsId,
   status: item.status ?? item.appointmentsStatus,
@@ -85,10 +84,6 @@ export const bookAppointment = ({
 export const cancelAppointment = (id) =>
   instance.delete(`/appointments/${id}`).then((res) => res.data);
 
-// Turnos libres de un médico entre dos fechas ({ id, date, startTime }).
-// Se espera GET /doctors/{id}/slots?from=&to= (adaptación de backend permitida por el TPI).
-// Si el endpoint todavía no existe, se arman los bloques de 30 min desde la disponibilidad semanal
-// (sin id de turno: se pueden ver pero no reservar hasta que el backend lo exponga).
 export async function getDoctorSlots(doctorId, from, to) {
   try {
     const { data } = await instance.get(`/doctors/${doctorId}/slots`, {
@@ -153,7 +148,6 @@ export async function getDoctorSlots(doctorId, from, to) {
   return { slots, derived: true };
 }
 
-// No hay GET por id en la API: se trae el día del turno y se busca ahí
 export async function getAppointmentById({ id, date }) {
   const page = await getAppointmentsByDate({ date, pageSize: 1000 });
   const found = page.data.find((item) => item.id === id);

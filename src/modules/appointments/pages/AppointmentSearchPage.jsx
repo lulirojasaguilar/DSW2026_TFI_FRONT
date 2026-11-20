@@ -1,11 +1,10 @@
 import Alert from '../../shared/components/molecules/Alert';
 import PageHeader from '../../shared/components/molecules/PageHeader';
 import Table from '../../shared/components/organisms/Table';
-import AppointmentFilters from '../components/AppointmentFilters';
-import { searchColumns } from '../components/appointmentColumns';
+import AppointmentFilters from '../components/organisms/AppointmentFilters';
+import { searchColumns } from '../components/organisms/appointmentColumns';
 import { useAppointmentSearch } from '../hook/useAppointmentSearch';
 
-// Página: compone los componentes con lo que expone el hook
 export default function AppointmentSearchPage() {
   const search = useAppointmentSearch();
 

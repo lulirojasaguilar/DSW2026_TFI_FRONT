@@ -6,7 +6,7 @@ import ConfirmDialog from '../../shared/components/molecules/ConfirmDialog';
 import PageHeader from '../../shared/components/molecules/PageHeader';
 import SearchInput from '../../shared/components/molecules/SearchInput';
 import Table from '../../shared/components/organisms/Table';
-import { specialtyColumns } from '../components/specialtyColumns';
+import { specialtyColumns } from '../components/organisms/specialtyColumns';
 import { useSpecialtiesList } from '../hook/useSpecialtiesList';
 
 export default function SpecialtiesListPage() {

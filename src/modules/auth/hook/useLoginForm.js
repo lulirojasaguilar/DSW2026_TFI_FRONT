@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
-import { getErrorMessage } from '../../shared/helpers/getErrorMessage';
+import { getErrorMessage } from '../../../core/helpers/getErrorMessage';
 import { useAuth } from './useAuth';
 
 export function useLoginForm({

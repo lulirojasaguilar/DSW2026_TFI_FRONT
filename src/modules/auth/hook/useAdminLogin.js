@@ -1,4 +1,4 @@
-import { getErrorMessage } from '../../shared/helpers/getErrorMessage';
+import { getErrorMessage } from '../../../core/helpers/getErrorMessage';
 import { loginAdmin } from '../services/authService';
 import { useLoginForm } from './useLoginForm';
 

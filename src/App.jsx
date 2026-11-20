@@ -4,38 +4,31 @@ import {
   RouterProvider,
 } from 'react-router-dom';
 import { AuthProvider } from './modules/auth/context/AuthProvider';
-import ProtectedRoute from './modules/auth/components/ProtectedRoute';
-import RootRedirect from './modules/auth/components/RootRedirect';
+import ProtectedRoute from './modules/auth/components/routing/ProtectedRoute';
+import RootRedirect from './modules/auth/components/routing/RootRedirect';
 import { ROLES } from './modules/shared/constants';
 
-// Templates
 import AdminLayout from './modules/shared/components/templates/AdminLayout';
 import PatientLayout from './modules/shared/components/templates/PatientLayout';
 
-// Auth Module
 import AccessDeniedPage from './modules/auth/pages/AccessDeniedPage';
 import AdminLoginPage from './modules/auth/pages/AdminLoginPage';
 import PatientLoginPage from './modules/auth/pages/PatientLoginPage';
 
-// Dashboard Module
 import DashboardPage from './modules/dashboard/pages/DashboardPage';
 
-// Doctors Module
 import DoctorsListPage from './modules/doctors/pages/DoctorsListPage';
 import DoctorFormPage from './modules/doctors/pages/DoctorFormPage';
 import DoctorSchedulePage from './modules/doctors/pages/DoctorSchedulePage';
 
-// Specialties Module
 import SpecialtiesListPage from './modules/specialties/pages/SpecialtiesListPage';
 import SpecialtyFormPage from './modules/specialties/pages/SpecialtyFormPage';
 
-// Appointments Module
 import AppointmentDetailPage from './modules/appointments/pages/AppointmentDetailPage';
 import AppointmentSearchPage from './modules/appointments/pages/AppointmentSearchPage';
 import BookAppointmentPage from './modules/appointments/pages/BookAppointmentPage';
 import MyAppointmentsPage from './modules/appointments/pages/MyAppointmentsPage';
 
-// Solo los dos logins son públicos. El resto pasa por ProtectedRoute ("/" solo redirige).
 const routes = [
   { path: '/', element: <RootRedirect /> },
   { path: '/login', element: <AdminLoginPage /> },
@@ -51,7 +44,7 @@ const routes = [
   {
     path: '/app',
     element: (
-      <ProtectedRoute role={ROLES.ADMIN}>
+      <ProtectedRoute allowedRoles={[ROLES.ADMIN]}>
         <AdminLayout />
       </ProtectedRoute>
     ),
@@ -72,7 +65,7 @@ const routes = [
   {
     path: '/patient',
     element: (
-      <ProtectedRoute role={ROLES.PATIENT}>
+      <ProtectedRoute allowedRoles={[ROLES.PATIENT]}>
         <PatientLayout />
       </ProtectedRoute>
     ),
