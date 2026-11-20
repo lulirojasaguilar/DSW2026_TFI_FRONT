@@ -1,12 +1,11 @@
 import { IdCard, Mail } from 'lucide-react';
-import Button from '../../shared/components/atoms/Button';
-import Alert from '../../shared/components/molecules/Alert';
+import Button from '../../../shared/components/atoms/Button';
+import Alert from '../../../shared/components/molecules/Alert';
 import FormField, {
   IconInput,
-} from '../../shared/components/molecules/FormField';
-import { usePatientLogin } from '../hook/usePatientLogin';
+} from '../../../shared/components/molecules/FormField';
+import { usePatientLogin } from '../../hook/usePatientLogin';
 
-// Organismo: formulario de login del paciente (correo + DNI)
 export default function PatientLoginForm() {
   const { register, errors, isSubmitting, apiError, onSubmit } =
     usePatientLogin();

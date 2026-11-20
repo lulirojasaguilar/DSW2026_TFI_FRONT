@@ -1,13 +1,12 @@
 import { useState } from 'react';
 import { ArrowRight, Eye, EyeOff, Lock, Mail, ShieldCheck } from 'lucide-react';
-import Button from '../../shared/components/atoms/Button';
-import Alert from '../../shared/components/molecules/Alert';
+import Button from '../../../shared/components/atoms/Button';
+import Alert from '../../../shared/components/molecules/Alert';
 import FormField, {
   IconInput,
-} from '../../shared/components/molecules/FormField';
-import { useAdminLogin } from '../hook/useAdminLogin';
+} from '../../../shared/components/molecules/FormField';
+import { useAdminLogin } from '../../hook/useAdminLogin';
 
-// Organismo: tarjeta blanca del login de administrador (formulario + aviso de seguridad)
 export default function AdminLoginForm() {
   const { register, errors, isSubmitting, apiError, onSubmit } =
     useAdminLogin();
