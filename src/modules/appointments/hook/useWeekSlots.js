@@ -44,6 +44,8 @@ export function useWeekSlots(doctorId, { onStart, onError }) {
     }
   };
 
+  const slotsOf = (iso) => slots.filter((slot) => slot.date === iso);
+
   const search = () => {
     setSearched(true);
 
@@ -61,7 +63,7 @@ export function useWeekSlots(doctorId, { onStart, onError }) {
   return {
     weekDays,
     searched,
-    slots,
+    slotsOf,
     loading,
     selected,
     mobileDay,
@@ -70,6 +72,7 @@ export function useWeekSlots(doctorId, { onStart, onError }) {
     search,
     resetSearch: () => setSearched(false),
     changeWeek,
+    nextWeek: () => changeWeek(DAYS_IN_WEEK),
     reload: () => loadSlots(weekStart, true),
   };
 }
