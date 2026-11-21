@@ -69,7 +69,6 @@ export function useBookAppointment() {
     searched: week.searched,
     weekDays: week.weekDays,
     slots: week.slots,
-    derived: week.derived,
     loadingSlots: week.loading,
     selected: week.selected,
     onSelectSlot: week.select,

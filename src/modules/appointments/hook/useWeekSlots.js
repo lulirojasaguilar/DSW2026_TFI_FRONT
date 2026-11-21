@@ -10,7 +10,6 @@ export function useWeekSlots(doctorId, { onStart, onError }) {
   const [weekStart, setWeekStart] = useState(initialWeekStart);
   const [searched, setSearched] = useState(false);
   const [slots, setSlots] = useState([]);
-  const [derived, setDerived] = useState(false);
   const [loading, setLoading] = useState(false);
   const [selected, setSelected] = useState(null);
   const [mobileDay, setMobileDay] = useState('');
@@ -29,14 +28,13 @@ export function useWeekSlots(doctorId, { onStart, onError }) {
     if (!keepMessage) onStart();
 
     try {
-      const { slots: found, derived: wasDerived } = await getDoctorSlots(
+      const found = await getDoctorSlots(
         doctorId,
         toIsoDate(start),
         toIsoDate(addDays(start, DAYS_IN_WEEK - 1))
       );
 
       setSlots(found);
-      setDerived(wasDerived);
       setSelected(null);
       setMobileDay(found[0]?.date ?? toIsoDate(start));
     } catch (error) {
@@ -64,7 +62,6 @@ export function useWeekSlots(doctorId, { onStart, onError }) {
     weekDays,
     searched,
     slots,
-    derived,
     loading,
     selected,
     mobileDay,

@@ -7,7 +7,6 @@ export default function WeekSlotPicker({
   weekDays,
   slots,
   loading,
-  derived,
   selected,
   onSelect,
   mobileDay,
@@ -39,12 +38,6 @@ export default function WeekSlotPicker({
             onNextWeek={() => onWeekChange(7)}
           />
         </>
-      )}
-      {derived && !loading && (
-        <p className="mt-3 text-[11px] text-amber-700">
-          Horarios calculados desde la disponibilidad semanal del doctor (el
-          backend aún no expone los turnos individuales).
-        </p>
       )}
     </section>
   );

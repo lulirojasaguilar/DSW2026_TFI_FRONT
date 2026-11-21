@@ -30,7 +30,6 @@ export default function BookAppointmentPage() {
             weekDays={booking.weekDays}
             slots={booking.slots}
             loading={booking.loadingSlots}
-            derived={booking.derived}
             selected={booking.selected}
             onSelect={booking.onSelectSlot}
             mobileDay={booking.mobileDay}

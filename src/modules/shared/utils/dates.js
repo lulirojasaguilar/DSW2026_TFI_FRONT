@@ -22,23 +22,11 @@ const DAYS = [
   'Sábado',
 ];
 
-export const WEEK_DAYS_API = [
-  'DOMINGO',
-  'LUNES',
-  'MARTES',
-  'MIÉRCOLES',
-  'JUEVES',
-  'VIERNES',
-  'SÁBADO',
-];
-
 export const pad = (n) => String(n).padStart(2, '0');
 
-// Date -> "YYYY-MM-DD" en hora local
 export const toIsoDate = (date) =>
   `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}`;
 
-// "YYYY-MM-DD" -> Date local (sin corrimiento por zona horaria)
 export const fromIsoDate = (iso) => {
   const [y, m, d] = iso.split('-').map(Number);
 
@@ -74,10 +62,8 @@ export const formatShortDate = (iso) => {
   return `${pad(d.getDate())} ${MONTHS[d.getMonth()].slice(0, 3)}, ${d.getFullYear()}`;
 };
 
-// "08:00:00" -> "08:00"
 export const shortTime = (time) => (time ? time.slice(0, 5) : '');
 
-// "08:30:00" -> "08:30 AM" (formato de 12 horas del mockup mobile)
 export const formatTime12 = (time) => {
   const [hours, minutes] = shortTime(time).split(':').map(Number);
   const suffix = hours >= 12 ? 'PM' : 'AM';
@@ -85,7 +71,6 @@ export const formatTime12 = (time) => {
   return `${pad(hours % 12 || 12)}:${pad(minutes)} ${suffix}`;
 };
 
-// "2024-05-15" -> "Lunes, 15 de Mayo de 2024"
 export const formatFullDate = (iso) => {
   const d = fromIsoDate(iso);
   const month = MONTHS[d.getMonth()].replace(/^./, (c) => c.toUpperCase());
