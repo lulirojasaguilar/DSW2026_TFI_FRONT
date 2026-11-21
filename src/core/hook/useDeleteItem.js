@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { getErrorMessage } from '../../../core/helpers/getErrorMessage';
+import { getErrorMessage } from '../helpers/getErrorMessage';
 
 export function useDeleteItem({ remove, successMessage, onRemoved }) {
   const [toDelete, setToDelete] = useState(null);
