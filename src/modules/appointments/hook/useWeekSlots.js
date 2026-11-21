@@ -3,12 +3,8 @@ import { getErrorMessage } from '../../../core/helpers/getErrorMessage';
 import { addDays, mondayOf, toIsoDate } from '../../shared/utils/dates';
 import { getDoctorSlots } from '../services/appointmentService';
 
-const initialWeekStart = () => {
-  const today = new Date();
-  const monday = mondayOf(today);
-
-  return [0, 6].includes(today.getDay()) ? addDays(monday, 7) : monday;
-};
+const DAYS_IN_WEEK = 7;
+const initialWeekStart = () => mondayOf(new Date());
 
 export function useWeekSlots(doctorId, { onStart, onError }) {
   const [weekStart, setWeekStart] = useState(initialWeekStart);
@@ -20,7 +16,10 @@ export function useWeekSlots(doctorId, { onStart, onError }) {
   const [mobileDay, setMobileDay] = useState('');
 
   const weekDays = useMemo(
-    () => Array.from({ length: 5 }, (_, index) => addDays(weekStart, index)),
+    () =>
+      Array.from({ length: DAYS_IN_WEEK }, (_, index) =>
+        addDays(weekStart, index)
+      ),
     [weekStart]
   );
 
@@ -33,7 +32,7 @@ export function useWeekSlots(doctorId, { onStart, onError }) {
       const { slots: found, derived: wasDerived } = await getDoctorSlots(
         doctorId,
         toIsoDate(start),
-        toIsoDate(addDays(start, 4))
+        toIsoDate(addDays(start, DAYS_IN_WEEK - 1))
       );
 
       setSlots(found);
