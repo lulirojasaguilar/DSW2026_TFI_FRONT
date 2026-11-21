@@ -1,8 +1,7 @@
 import { useParams, useSearchParams } from 'react-router-dom';
-import { useApi } from '../../shared/hook/useApi';
+import { useApi } from '../../../core/hook/useApi';
 import { getAppointmentById } from '../services/appointmentService';
 
-// Lógica de "Ver Detalle": el id va en la ruta y la fecha del turno en la query (?date=)
 export function useAppointmentDetail() {
   const { id } = useParams();
   const [params] = useSearchParams();

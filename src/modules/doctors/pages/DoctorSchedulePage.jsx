@@ -5,7 +5,7 @@ import Spinner from '../../shared/components/atoms/Spinner';
 import Alert from '../../shared/components/molecules/Alert';
 import Breadcrumb from '../../shared/components/molecules/Breadcrumb';
 import InfoNote from '../../shared/components/molecules/InfoNote';
-import { SLOT_MINUTES } from '../../shared/constants';
+import { SLOT_MINUTES } from '../../../core/constants';
 import DoctorPicker from '../components/molecules/DoctorPicker';
 import ScheduleTable from '../components/organisms/ScheduleTable';
 import { useDoctorSchedule } from '../hook/useDoctorSchedule';

@@ -1,4 +1,4 @@
-import { useApi } from '../../shared/hook/useApi';
+import { useApi } from '../../../core/hook/useApi';
 import { getSpecialties } from '../services/specialtyService';
 
 export function useSpecialtyOptions() {

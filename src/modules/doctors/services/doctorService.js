@@ -1,5 +1,5 @@
 import { instance } from '../../../core/api/axiosInstance';
-import { ERROR_CODES } from '../../shared/constants';
+import { ERROR_CODES } from '../../../core/constants';
 
 export const getDoctors = ({ pageSize = 10, pageIndex = 1, name } = {}) =>
   instance

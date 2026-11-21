@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { getErrorMessage } from '../../../core/helpers/getErrorMessage';
-import { useApi } from '../../shared/hook/useApi';
+import { useApi } from '../../../core/hook/useApi';
 import {
   getDoctorAvailabilities,
   getDoctors,

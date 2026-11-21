@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import { getDoctors } from '../../doctors/services/doctorService';
 import { getErrorMessage } from '../../../core/helpers/getErrorMessage';
-import { useApi } from '../../shared/hook/useApi';
+import { useApi } from '../../../core/hook/useApi';
 import { getSpecialties } from '../../specialties/services/specialtyService';
 import { searchAppointments } from '../services/appointmentService';
 

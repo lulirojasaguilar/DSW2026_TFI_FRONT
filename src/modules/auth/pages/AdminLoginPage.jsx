@@ -1,6 +1,6 @@
 import { Link, Navigate } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
-import { ROLES } from '../../shared/constants';
+import { ROLES } from '../../../core/constants';
 import AdminLoginForm from '../components/organisms/AdminLoginForm';
 import AuthShell from '../components/templates/AuthShell';
 import { useAuth } from '../hook/useAuth';

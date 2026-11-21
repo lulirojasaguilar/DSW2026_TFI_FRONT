@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Stethoscope } from 'lucide-react';
-import { formatShortDate, shortTime } from '../../../shared/utils/dates';
+import { formatShortDate, shortTime } from '../../../../core/utils/dates';
 import StatusLabel from '../atoms/StatusLabel';
 
 export const searchColumns = [

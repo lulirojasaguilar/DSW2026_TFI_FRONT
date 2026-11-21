@@ -1,8 +1,8 @@
 import { Outlet, useNavigate } from 'react-router-dom';
 import Sidebar from '../organisms/Sidebar';
 import { useAuth } from '../../../auth/hook/useAuth';
-import { ROLE_LABELS } from '../../constants';
-import { userNameFromEmail } from '../../utils/user';
+import { ROLE_LABELS } from '../../../../core/constants';
+import { userNameFromEmail } from '../../../../core/utils/user';
 
 export default function AdminLayout() {
   const { session, logout } = useAuth();

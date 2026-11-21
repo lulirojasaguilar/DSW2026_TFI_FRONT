@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react';
 import { getErrorMessage } from '../../../core/helpers/getErrorMessage';
-import { addDays, mondayOf, toIsoDate } from '../../shared/utils/dates';
+import { addDays, mondayOf, toIsoDate } from '../../../core/utils/dates';
 import { getDoctorSlots } from '../services/appointmentService';
 
 const DAYS_IN_WEEK = 7;

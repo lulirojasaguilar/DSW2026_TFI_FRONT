@@ -6,7 +6,7 @@ import {
 import { AuthProvider } from './modules/auth/context/AuthProvider';
 import ProtectedRoute from './modules/auth/components/routing/ProtectedRoute';
 import RootRedirect from './modules/auth/components/routing/RootRedirect';
-import { ROLES } from './modules/shared/constants';
+import { ROLES } from './core/constants';
 
 import AdminLayout from './modules/shared/components/templates/AdminLayout';
 import PatientLayout from './modules/shared/components/templates/PatientLayout';

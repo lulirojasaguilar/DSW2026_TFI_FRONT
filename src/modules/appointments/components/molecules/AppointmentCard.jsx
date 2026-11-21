@@ -1,5 +1,5 @@
 import Badge from '../../../shared/components/atoms/Badge';
-import { shortTime } from '../../../shared/utils/dates';
+import { shortTime } from '../../../../core/utils/dates';
 
 const STATUS = {
   BOOKED: { text: 'Confirmado', tone: 'green' },

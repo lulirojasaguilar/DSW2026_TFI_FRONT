@@ -1,5 +1,5 @@
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-import { monthName } from '../../../shared/utils/dates';
+import { monthName } from '../../../../core/utils/dates';
 
 export default function WeekHeader({ weekDays, onWeekChange }) {
   const last = weekDays[weekDays.length - 1];

@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { ShieldAlert } from 'lucide-react';
 import Button from '../../shared/components/atoms/Button';
-import { HOME_BY_ROLE } from '../../shared/constants';
+import { HOME_BY_ROLE } from '../../../core/constants';
 import { useAuth } from '../hook/useAuth';
 
 export default function AccessDeniedPage() {

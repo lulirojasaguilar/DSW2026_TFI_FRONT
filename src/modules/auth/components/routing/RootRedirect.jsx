@@ -1,6 +1,6 @@
 import { Navigate } from 'react-router-dom';
 import { useAuth } from '../../hook/useAuth';
-import { HOME_BY_ROLE } from '../../../shared/constants';
+import { HOME_BY_ROLE } from '../../../../core/constants';
 
 function RootRedirect() {
   const { role } = useAuth();

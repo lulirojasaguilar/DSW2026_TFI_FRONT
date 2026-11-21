@@ -1,4 +1,4 @@
-import { toIsoDate } from '../../../shared/utils/dates';
+import { toIsoDate } from '../../../../core/utils/dates';
 import { isSelectedSlot, NO_SLOTS, SHORT_DAYS } from '../../utils/weekView';
 import SlotButton from '../atoms/SlotButton';
 

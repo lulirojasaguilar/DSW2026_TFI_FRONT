@@ -1,13 +1,13 @@
 import { CalendarCheck, CalendarDays, CircleCheck } from 'lucide-react';
 import Button from '../../../shared/components/atoms/Button';
 import { controlClass } from '../../../shared/components/molecules/FormField';
-import { SLOT_MINUTES } from '../../../shared/constants';
+import { SLOT_MINUTES } from '../../../../core/constants';
 import {
   dayName,
   formatFullDate,
   formatLongDate,
   fromIsoDate,
-} from '../../../shared/utils/dates';
+} from '../../../../core/utils/dates';
 
 export default function SelectionSummary({
   selected,

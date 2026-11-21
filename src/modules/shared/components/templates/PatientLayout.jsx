@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link, NavLink, Outlet, useNavigate } from 'react-router-dom';
 import { Bell, BriefcaseMedical, Menu } from 'lucide-react';
 import { useAuth } from '../../../auth/hook/useAuth';
-import { userNameFromEmail } from '../../utils/user';
+import { userNameFromEmail } from '../../../../core/utils/user';
 
 const LINKS = [
   { to: '/patient/book', label: 'Reservar Turno' },
@@ -14,7 +14,6 @@ const navClass = ({ isActive }) =>
     isActive ? 'bg-brand-900 text-white' : 'text-muted hover:text-brand-900'
   }`;
 
-// Iniciales para el avatar: "maria.gomez" -> "MG"
 const initialsOf = (name = '') =>
   name
     .split(/[.\s_-]+/)
@@ -23,7 +22,6 @@ const initialsOf = (name = '') =>
     .map((part) => part[0].toUpperCase())
     .join('');
 
-// Template del paciente: encabezado superior + contenido. Su home es "Mis turnos".
 export default function PatientLayout() {
   const { session, logout } = useAuth();
   const navigate = useNavigate();
