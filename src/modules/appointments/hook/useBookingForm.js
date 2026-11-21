@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { getErrorMessage } from '../../../core/helpers/getErrorMessage';
-import { formatLongDate } from '../../shared/utils/dates';
+import { formatLongDate } from '../../../core/utils/dates';
 import { bookAppointment } from '../services/appointmentService';
 
 const MIN_REASON_LENGTH = 5;

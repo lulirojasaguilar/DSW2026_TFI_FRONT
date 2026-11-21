@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate, useParams } from 'react-router-dom';
 import { getErrorMessage } from '../../../core/helpers/getErrorMessage';
-import { useApi } from '../../shared/hook/useApi';
+import { useApi } from '../../../core/hook/useApi';
 import { getSpecialties } from '../../specialties/services/specialtyService';
 import {
   createDoctor,

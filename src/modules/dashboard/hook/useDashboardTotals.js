@@ -1,7 +1,7 @@
 import { getAppointmentsByDate } from '../../appointments/services/appointmentService';
 import { getDoctors } from '../../doctors/services/doctorService';
-import { useApi } from '../../shared/hook/useApi';
-import { toIsoDate } from '../../shared/utils/dates';
+import { useApi } from '../../../core/hook/useApi';
+import { toIsoDate } from '../../../core/utils/dates';
 import { getSpecialties } from '../../specialties/services/specialtyService';
 
 const loadTotals = async () => {

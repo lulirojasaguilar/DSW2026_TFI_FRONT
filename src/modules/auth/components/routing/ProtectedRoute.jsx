@@ -1,6 +1,6 @@
 import { Navigate } from 'react-router-dom';
 import { useAuth } from '../../hook/useAuth';
-import { LOGIN_BY_ROLE } from '../../../shared/constants';
+import { LOGIN_BY_ROLE } from '../../../../core/constants';
 
 export default function ProtectedRoute({ allowedRoles, children }) {
   const { isAuthenticated, hasRole } = useAuth();

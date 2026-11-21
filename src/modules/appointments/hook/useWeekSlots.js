@@ -1,26 +1,24 @@
 import { useMemo, useState } from 'react';
 import { getErrorMessage } from '../../../core/helpers/getErrorMessage';
-import { addDays, mondayOf, toIsoDate } from '../../shared/utils/dates';
+import { addDays, mondayOf, toIsoDate } from '../../../core/utils/dates';
 import { getDoctorSlots } from '../services/appointmentService';
 
-const initialWeekStart = () => {
-  const today = new Date();
-  const monday = mondayOf(today);
-
-  return [0, 6].includes(today.getDay()) ? addDays(monday, 7) : monday;
-};
+const DAYS_IN_WEEK = 7;
+const initialWeekStart = () => mondayOf(new Date());
 
 export function useWeekSlots(doctorId, { onStart, onError }) {
   const [weekStart, setWeekStart] = useState(initialWeekStart);
   const [searched, setSearched] = useState(false);
   const [slots, setSlots] = useState([]);
-  const [derived, setDerived] = useState(false);
   const [loading, setLoading] = useState(false);
   const [selected, setSelected] = useState(null);
   const [mobileDay, setMobileDay] = useState('');
 
   const weekDays = useMemo(
-    () => Array.from({ length: 5 }, (_, index) => addDays(weekStart, index)),
+    () =>
+      Array.from({ length: DAYS_IN_WEEK }, (_, index) =>
+        addDays(weekStart, index)
+      ),
     [weekStart]
   );
 
@@ -30,14 +28,13 @@ export function useWeekSlots(doctorId, { onStart, onError }) {
     if (!keepMessage) onStart();
 
     try {
-      const { slots: found, derived: wasDerived } = await getDoctorSlots(
+      const found = await getDoctorSlots(
         doctorId,
         toIsoDate(start),
-        toIsoDate(addDays(start, 4))
+        toIsoDate(addDays(start, DAYS_IN_WEEK - 1))
       );
 
       setSlots(found);
-      setDerived(wasDerived);
       setSelected(null);
       setMobileDay(found[0]?.date ?? toIsoDate(start));
     } catch (error) {
@@ -46,6 +43,8 @@ export function useWeekSlots(doctorId, { onStart, onError }) {
       setLoading(false);
     }
   };
+
+  const slotsOf = (iso) => slots.filter((slot) => slot.date === iso);
 
   const search = () => {
     setSearched(true);
@@ -64,8 +63,7 @@ export function useWeekSlots(doctorId, { onStart, onError }) {
   return {
     weekDays,
     searched,
-    slots,
-    derived,
+    slotsOf,
     loading,
     selected,
     mobileDay,
@@ -74,6 +72,7 @@ export function useWeekSlots(doctorId, { onStart, onError }) {
     search,
     resetSearch: () => setSearched(false),
     changeWeek,
+    nextWeek: () => changeWeek(DAYS_IN_WEEK),
     reload: () => loadSlots(weekStart, true),
   };
 }

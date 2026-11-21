@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { getErrorMessage } from '../../../core/helpers/getErrorMessage';
+import { getErrorMessage } from '../helpers/getErrorMessage';
 
 export function useApi(request, deps = []) {
   const [state, setState] = useState({ data: null, loading: true, error: '' });

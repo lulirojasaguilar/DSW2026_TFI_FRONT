@@ -1,12 +1,10 @@
 import { useState } from 'react';
-import { useApi } from '../../shared/hook/useApi';
-import { useDebounce } from '../../shared/hook/useDebounce';
+import { useApi } from '../../../core/hook/useApi';
+import { useDebounce } from '../../../core/hook/useDebounce';
 import { getDoctors } from '../services/doctorService';
 
 const MIN_SEARCH_LENGTH = 3;
 
-// Una página de doctores con búsqueda por nombre y paginación (base 1).
-// La usan el panel y el listado de doctores, cada uno con su tamaño de página.
 export function useDoctorsPage(pageSize) {
   const [search, setSearch] = useState('');
   const [pageIndex, setPageIndex] = useState(1);

@@ -1,4 +1,4 @@
-import { SLOT_MINUTES } from '../../../shared/constants';
+import { SLOT_MINUTES } from '../../../../core/constants';
 import { isSelectedSlot, NO_SLOTS } from '../../utils/weekView';
 import SlotButton from '../atoms/SlotButton';
 import DayChips from '../molecules/DayChips';

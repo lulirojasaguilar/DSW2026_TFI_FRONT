@@ -1,4 +1,4 @@
-import { formatTime12 } from '../../../shared/utils/dates';
+import { formatTime12 } from '../../../../core/utils/dates';
 
 const STYLES = {
   desktop: {

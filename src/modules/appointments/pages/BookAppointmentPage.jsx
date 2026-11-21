@@ -1,8 +1,11 @@
+import Spinner from '../../shared/components/atoms/Spinner';
 import Alert from '../../shared/components/molecules/Alert';
 import BookingFilters from '../components/organisms/BookingFilters';
 import DoctorSummaryCard from '../components/molecules/DoctorSummaryCard';
+import MobileSlotPicker from '../components/organisms/MobileSlotPicker';
 import SelectionSummary from '../components/organisms/SelectionSummary';
-import WeekSlotPicker from '../components/organisms/WeekSlotPicker';
+import WeekColumns from '../components/organisms/WeekColumns';
+import WeekHeader from '../components/molecules/WeekHeader';
 import { useBookAppointment } from '../hook/useBookAppointment';
 
 export default function BookAppointmentPage() {
@@ -26,17 +29,33 @@ export default function BookAppointmentPage() {
             specialty={doctor.specialty?.name}
             licenseNumber={doctor.licenseNumber}
           />
-          <WeekSlotPicker
-            weekDays={booking.weekDays}
-            slots={booking.slots}
-            loading={booking.loadingSlots}
-            derived={booking.derived}
-            selected={booking.selected}
-            onSelect={booking.onSelectSlot}
-            mobileDay={booking.mobileDay}
-            onMobileDayChange={booking.onMobileDayChange}
-            onWeekChange={booking.onWeekChange}
-          />
+          <section className="mt-4 rounded-xl border border-brand-100 bg-white p-4 shadow-sm">
+            <WeekHeader
+              weekDays={booking.weekDays}
+              onWeekChange={booking.onWeekChange}
+            />
+            {booking.loadingSlots ? (
+              <Spinner label="Buscando disponibilidad..." />
+            ) : (
+              <>
+                <WeekColumns
+                  weekDays={booking.weekDays}
+                  slotsOf={booking.slotsOf}
+                  selected={booking.selected}
+                  onSelect={booking.onSelectSlot}
+                />
+                <MobileSlotPicker
+                  weekDays={booking.weekDays}
+                  daySlots={booking.slotsOf(booking.mobileDay)}
+                  selected={booking.selected}
+                  onSelect={booking.onSelectSlot}
+                  mobileDay={booking.mobileDay}
+                  onMobileDayChange={booking.onMobileDayChange}
+                  onNextWeek={booking.onNextWeek}
+                />
+              </>
+            )}
+          </section>
           {booking.selected && <SelectionSummary {...booking.summary} />}
         </>
       )}

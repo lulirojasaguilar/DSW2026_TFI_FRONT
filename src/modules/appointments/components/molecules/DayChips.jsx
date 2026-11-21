@@ -1,4 +1,4 @@
-import { monthName, toIsoDate } from '../../../shared/utils/dates';
+import { monthName, toIsoDate } from '../../../../core/utils/dates';
 import { SHORT_DAYS } from '../../utils/weekView';
 
 export default function DayChips({ weekDays, selectedDay, onChange }) {

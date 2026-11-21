@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useAuth } from '../../auth/hook/useAuth';
 import { getErrorMessage } from '../../../core/helpers/getErrorMessage';
-import { useApi } from '../../shared/hook/useApi';
+import { useApi } from '../../../core/hook/useApi';
 import {
   cancelAppointment,
   getPatientAppointments,

@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { useApi } from '../../shared/hook/useApi';
-import { useDebounce } from '../../shared/hook/useDebounce';
-import { useDeleteItem } from '../../shared/hook/useDeleteItem';
+import { useApi } from '../../../core/hook/useApi';
+import { useDebounce } from '../../../core/hook/useDebounce';
+import { useDeleteItem } from '../../../core/hook/useDeleteItem';
 import { deleteSpecialty, getSpecialties } from '../services/specialtyService';
 
 const PAGE_SIZE = 4;

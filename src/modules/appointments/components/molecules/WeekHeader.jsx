@@ -1,5 +1,5 @@
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-import { monthName } from '../../../shared/utils/dates';
+import { monthName } from '../../../../core/utils/dates';
 
 export default function WeekHeader({ weekDays, onWeekChange }) {
   const last = weekDays[weekDays.length - 1];
@@ -17,7 +17,7 @@ export default function WeekHeader({ weekDays, onWeekChange }) {
           <ChevronLeft className="h-4 w-4" />
         </button>
         <span>
-          Lunes {weekDays[0].getDate()} - Viernes {last.getDate()}, {month}
+          Lunes {weekDays[0].getDate()} - Domingo {last.getDate()}, {month}
         </span>
         <button
           type="button"

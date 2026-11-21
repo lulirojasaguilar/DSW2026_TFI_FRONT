@@ -1,12 +1,4 @@
 import { instance } from '../../../core/api/axiosInstance';
-import {
-  WEEK_DAYS_API,
-  fromIsoDate,
-  toIsoDate,
-  addDays,
-  pad,
-} from '../../shared/utils/dates';
-import { getDoctorAvailabilities } from '../../doctors/services/doctorService';
 
 export const normalizeAppointment = (item) => ({
   id: item.id ?? item.appointmentsId,
@@ -84,69 +76,16 @@ export const bookAppointment = ({
 export const cancelAppointment = (id) =>
   instance.delete(`/appointments/${id}`).then((res) => res.data);
 
-export async function getDoctorSlots(doctorId, from, to) {
-  try {
-    const { data } = await instance.get(`/doctors/${doctorId}/slots`, {
-      params: { from, to },
-    });
-
-    return {
-      slots: data.map((slot) => ({
+export const getDoctorSlots = (doctorId, from, to) =>
+  instance
+    .get(`/doctors/${doctorId}/slots`, { params: { from, to } })
+    .then((res) =>
+      res.data.map((slot) => ({
         id: slot.id,
         date: slot.date,
         startTime: slot.startTime.slice(0, 5),
-      })),
-      derived: false,
-    };
-  } catch (error) {
-    if (error.response?.status !== 404 && error.response?.status !== 405)
-      throw error;
-  }
-  const rules = await getDoctorAvailabilities(doctorId);
-  const slots = [];
-  const now = new Date();
-
-  for (
-    let day = fromIsoDate(from);
-    toIsoDate(day) <= to;
-    day = addDays(day, 1)
-  ) {
-    const name = WEEK_DAYS_API[day.getDay()];
-
-    rules
-      .filter((rule) => rule.day.toUpperCase() === name)
-      .forEach((rule) => {
-        let [h, m] = rule.startTime.split(':').map(Number);
-        const [eh, em] = rule.endTime.split(':').map(Number);
-
-        while (h * 60 + m < eh * 60 + em) {
-          const at = new Date(
-            day.getFullYear(),
-            day.getMonth(),
-            day.getDate(),
-            h,
-            m
-          );
-
-          if (at > now)
-            slots.push({
-              id: null,
-              date: toIsoDate(day),
-              startTime: `${pad(h)}:${pad(m)}`,
-            });
-
-          m += 30;
-
-          if (m >= 60) {
-            h += 1;
-            m -= 60;
-          }
-        }
-      });
-  }
-
-  return { slots, derived: true };
-}
+      }))
+    );
 
 export async function getAppointmentById({ id, date }) {
   const page = await getAppointmentsByDate({ date, pageSize: 1000 });

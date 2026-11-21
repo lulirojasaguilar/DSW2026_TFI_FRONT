@@ -1,4 +1,4 @@
-import { formatLongDate, shortTime } from '../../../shared/utils/dates';
+import { formatLongDate, shortTime } from '../../../../core/utils/dates';
 import StatusLabel from '../atoms/StatusLabel';
 
 function Field({ label, children }) {

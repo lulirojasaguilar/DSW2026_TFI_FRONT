@@ -1,15 +1,15 @@
-import { toIsoDate } from '../../../shared/utils/dates';
+import { toIsoDate } from '../../../../core/utils/dates';
 import { isSelectedSlot, NO_SLOTS, SHORT_DAYS } from '../../utils/weekView';
 import SlotButton from '../atoms/SlotButton';
 
 export default function WeekColumns({ weekDays, slotsOf, selected, onSelect }) {
   return (
-    <div className="hidden grid-cols-5 divide-x divide-brand-100 md:grid">
+    <div className="hidden grid-cols-7 divide-x divide-brand-100 md:grid">
       {weekDays.map((day) => {
         const list = slotsOf(toIsoDate(day));
 
         return (
-          <div key={day.toISOString()} className="px-3 pb-4 text-center">
+          <div key={day.toISOString()} className="px-2 pb-4 text-center">
             <p className="text-[10px] font-bold text-muted">
               {SHORT_DAYS[day.getDay()]}
             </p>
